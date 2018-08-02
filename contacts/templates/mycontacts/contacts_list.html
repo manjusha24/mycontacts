@@ -1,0 +1,14 @@
+{% extends "mycontacts/base.html" %}
+{% block content %}
+<h1>
+    Contacts
+    {% if user %}(<a href="{% url 'mycontacts:contact_create' %}">add</a>){% endif %}
+</h1>
+<ul>
+    {% for contact in contacts_list %}
+        <li><a href="{% url 'mycontacts:contact_detail' contact.id %}">
+            {{ contact.name }}</a></li>
+    {% empty %}<li>Sorry, no contacts entered yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
